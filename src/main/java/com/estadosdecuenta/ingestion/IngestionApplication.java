@@ -16,7 +16,7 @@ public class IngestionApplication {
 		SpringApplication.run(IngestionApplication.class, args);
 
 		ConnectionFactory factory = new ConnectionFactory();
-		factory.setHost("192.168.1.60");
+		factory.setHost("mq");
 		factory.setPort(5672);
 		try (Connection connection = factory.newConnection();
 				Channel channel = connection.createChannel()) {
