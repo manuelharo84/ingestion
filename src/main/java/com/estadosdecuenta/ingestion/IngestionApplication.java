@@ -16,7 +16,7 @@ import com.rabbitmq.client.Channel;
 @RestController
 public class IngestionApplication {
 
-	private final static String TASK_QUEUE_NAME = "hello";
+	private final static String TASK_QUEUE_NAME = "check";
 
 	@RequestMapping("/")
 	public String home() throws IOException, TimeoutException {
@@ -28,7 +28,7 @@ public class IngestionApplication {
 				Channel channel = connection.createChannel()) {
 			channel.queueDeclare(TASK_QUEUE_NAME, false, false, false, null);
 
-			for (int i = 1; i < 100; i++) {
+			for (int i = 1; i < 10; i++) {
 				String message = "Hola Mundo" + i;
 				channel.basicPublish("", TASK_QUEUE_NAME, null, message.getBytes());
 				System.out.println(" [x] Sent '" + message + "'");
